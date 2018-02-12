@@ -3,14 +3,14 @@ var $ = require('jQuery');
 
 $(document).ready(() => {
   getTopWord()
-  $('button').on('click', breakDown)
   $("textarea")[0]
-    .addEventListener("keyup", function (event) {
+  .addEventListener("keyup", function (event) {
     event.preventDefault();
     if (event.keyCode === 13) {
       $("button").click()
     }
   })
+  $('button').on('click', breakDown)
 })
 
 const getTopWord = () => {
@@ -56,7 +56,7 @@ const getWordCount = (wordList) => {
 
 const breakDown = () => {
   event.preventDefault
-  let wordList = $('textarea')[0].value.split(' ')
+  let wordList = $('textarea')[0].value.replace(/\n/g, "").split(' ')
   let wordCount = getWordCount(wordList)
   Object.entries(wordCount).forEach(function(word) {
     appendToWordCount(word)
